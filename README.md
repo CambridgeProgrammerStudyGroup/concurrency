@@ -8,6 +8,7 @@ as we go through the ["Seven Concurrency Models in Seven Weeks"](https://pragpro
 
 ## General resources 
 
+ - [The Deadlock Empire](https://deadlockempire.github.io/#) Programming game in which you act as the scheduler and attempt to make concurrent programs fail by changing the order of execution.
  - [stdatomic.h](http://en.cppreference.com/w/c/atomic) C11 standard atomic functions
  - [Portable version of stdatomic.h](https://gist.github.com/nhatminhle/5181506)
  - [Is Parallel Programming Hard, And, If So, What Can You Do About It?](https://www.kernel.org/pub/linux/kernel/people/paulmck/perfbook/perfbook.html) (Detailed book on parallel/concurrent programming)
