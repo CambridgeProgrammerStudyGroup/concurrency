@@ -1,11 +1,11 @@
-import java.util.*;
 
 class Numbers{
 
+	static boolean done = false;
+	static int runCount = 0;
+
 	private String x = "";
 	private String y = "";
-
-	private ArrayList<String> watchdata = new ArrayList<String>();
 
 	static void wr(String line){ System.out.println(line); }
 
@@ -21,10 +21,16 @@ class Numbers{
   			temp2 += "=";
   		}
 
-  		y = temp2;
+  		// lenX: 0 lenY 0
+  		
+  		y = temp2;  
+  		// lenX: 0 lenY 40
+  		
   		x = temp1;
-
+  		// lenX: 40 lenY 40
+  		
   		y = y + y;
+  		// lenX: 40 lenY 80
 
   		wr(x);
   		wr(y);
@@ -35,45 +41,18 @@ class Numbers{
   	public void Watch(int count) {
   		int doubleCount = count + count;
   		String myX = "", myY = "";
-  		while(y.length() < doubleCount){
-  			myY = this.y;
-  			myX = this.x;
-  			if(myX.length() != 0 || myY.length() != 0){
-	  			watchdata.add(String.valueOf(myX.length()) + ":" + String.valueOf(myY.length()));
-  				// while(true){
-  				// 	wr("woh! x:" + myX.length() + " y:" + myY.length());
-  				// }
+  		do{
+  			myY = this.y;  	// order imporatant to make sure anomalies
+  			myX = this.x;  	// are not due to stuff happening between 
+  							// assignments
+
+  			// this shouldn't be true if happening in written order.
+  			if(myX.length() == 0 && myY.length() == doubleCount){
+  				wr("Wooah! x:" + myX.length() + " y:" + myY.length()
+  					+ " (Run count: " + runCount + ")");
+  				done = true;
   			}
-  		}
-			myY = this.y;
-			myX = this.x;
-  		watchdata.add(String.valueOf(myX.length()) + ":" + String.valueOf(myY.length()));
-  		for(Iterator<String> itr = watchdata.iterator(); itr.hasNext();){
-  			wr(itr.next());
-  		}
-  	}
-
-  	static void RunOnce() throws InterruptedException {
-  		
-  		Numbers numbers = new Numbers();		
-
-		Thread countPrint = new Thread(){
-			public void run()  {
-				numbers.CountAndPrint(40);
-			};
-		};
-
-		Thread watch = new Thread(){
-			public void run() {
-				numbers.Watch(40);
-			};
-		};
-
-		watch.start();
-		countPrint.start();
-		countPrint.join();
-		watch.join();
-		wr("Done.");
+  		} while ((!done) && myY.length() < doubleCount && myX.length() < count);
   	}
 
 }
