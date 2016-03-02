@@ -15,10 +15,10 @@ ignorance. But...
 
 In the Printer.BuildAndPrint method the expected states are:
 
-	lenX:  0  lenY  0
-	lenX:  0  lenY 40
-	lenX: 40  lenY 40
-	lenX: 40  lenY 80
+	lenX:  0  lenY:  0
+	lenX:  0  lenY: 40
+	lenX: 40  lenY: 40
+	lenX: 40  lenY: 80
 
 However, we do get cases where lenX=0 and lenY=80, which I think
 means we're getting reordering.
