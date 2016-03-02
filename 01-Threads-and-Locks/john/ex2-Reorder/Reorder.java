@@ -1,72 +1,34 @@
-/*
-	*** Behaviour depends on flags passed to Java !! ***
-
-	- If no flags are passed then it hangs!
-	- If -Xint (interpret only) is passed then it runs indefinately...
-	- If -Xcomp (compile first) then it works.
-
-	(javac 1.8.0_73, java version "1.8.0_73")
-
-	Even then I'm not confident that the behaviour isn't a symptom of my
-	ignorance.
-
-	But in the Numbers.CountPrint method the expected states are:
-
-  		lenX:  0  lenY  0
-  		lenX:  0  lenY 40
-  		lenX: 40  lenY 40
-  		lenX: 40  lenY 80
-
-	However we do get cases where lenX=0 and lenY=80, which I think
-	means we're getting reordering.
-
-	Sample output:
-	
-[ex2-Reorder] java -Xcomp Reorder
-----------------------------------------
-================================================================================
-----------------------------------------
-================================================================================
-<snip>
-----------------------------------------
-================================================================================
-----------------------------------------
-================================================================================
-Wooah! x:0 y:80 (Run count: 88)
-[ex2-Reorder]
-
-*/
 
 public class Reorder {
   	
   	public static void main(String[] args) throws InterruptedException {
 		
-		while(! Numbers.done){
+		while(! Printer.done){
 			RunOnce();				
 		}
 	}
 
-	static int count = 40;
+	static int count = 35;
 	static void RunOnce() throws InterruptedException {
-  		Numbers.runCount++;
+  		Printer.runCount++;
 
-  		Numbers numbers = new Numbers();		
+  		Printer printer = new Printer();		
 
-		Thread countPrint = new Thread(){
+		Thread buildAndPrint = new Thread(){
 			public void run()  {
-				numbers.CountAndPrint(count);
+				printer.BuildAndPrint(count);
 			};
 		};
 
 		Thread watch = new Thread(){
 			public void run() {
-				numbers.Watch(count);
+				printer.Watch(count);
 			};
 		};
 
 		watch.start();
-		countPrint.start();
-		countPrint.join();
+		buildAndPrint.start();
+		buildAndPrint.join();
 		watch.join();
   	}
 }
