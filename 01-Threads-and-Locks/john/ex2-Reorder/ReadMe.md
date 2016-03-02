@@ -1,4 +1,6 @@
-### Behaviour depends on flags passed to Java !!!
+# Reordering
+
+### Behaviour depended on flags passed to Java !!!
 
   - If no flags are passed then it hangs!
   - If -Xint (interpret only) is passed then it runs indefinately...
