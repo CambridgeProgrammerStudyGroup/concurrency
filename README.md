@@ -13,3 +13,4 @@ as we go through the ["Seven Concurrency Models in Seven Weeks"](https://pragpro
  - [Portable version of stdatomic.h](https://gist.github.com/nhatminhle/5181506)
  - [Is Parallel Programming Hard, And, If So, What Can You Do About It?](https://www.kernel.org/pub/linux/kernel/people/paulmck/perfbook/perfbook.html) (Detailed book on parallel/concurrent programming)
  - [Useful answer on stackoverflow](http://stackoverflow.com/questions/22339466/how-does-compare-and-swap-work/22339493#22339493)
+ - [Concurrency patterns in Go](http://blog.codeship.com/an-intro-to-concurrency-patterns-in-go/)
