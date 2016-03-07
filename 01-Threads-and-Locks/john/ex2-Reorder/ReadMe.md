@@ -2,9 +2,9 @@
 
 ### Behaviour depended on flags passed to Java !!!
 
-  - If no flags are passed then it hangs!
-  - If -Xint (interpret only) is passed then it runs indefinately...
-  - If -Xcomp (compile first) then it works (i.e. might be reordering)
+  - If no flags were passed then it hung!
+  - If -Xint (interpret only) was passed then it ran indefinately...
+  - If -Xcomp (compile first) then it worked (i.e. might have reordered)
 
 (Using: javac 1.8.0_73, java version "1.8.0_73")
 
