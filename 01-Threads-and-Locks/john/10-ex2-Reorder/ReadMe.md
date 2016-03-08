@@ -61,3 +61,15 @@ means we're getting reordering.
 
 	Wooah! x:0 y:70 (Run count: 11)
 	[ex2-Reorder]
+
+Update:
+-------
+Marking x and y as volatile prevents:
+  
+  1.	the -Xcomp version from stopping, i.e. it never finds evidence
+		of reordering.
+  2.	the normal/mixed version hanging.
+
+This suggest (to me) that there might actually be reordering and it's
+possible the hanging of the 'normal/mixed' version is related to the
+reordering (possibly as it switches from intperpreted to compiled).
