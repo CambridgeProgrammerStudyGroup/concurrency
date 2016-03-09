@@ -1,4 +1,4 @@
-public class Main {
+public class ClassicThreads {
 
 	public static void main(String[] args) throws InterruptedException{
 		class Reorder {
@@ -44,8 +44,8 @@ public class Main {
 
 		System.out.println("Begin testing");
 
-		ex.run();
-		ch.run();
+		ex.start();
+		ch.start();
 		ex.join();
 		ch.join();
 	}
