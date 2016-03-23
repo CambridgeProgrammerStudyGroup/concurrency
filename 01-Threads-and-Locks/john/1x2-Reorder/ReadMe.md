@@ -2,9 +2,9 @@
 
 ### Behaviour depended on flags passed to Java !!!
 
-  - If no flags are passed then it hangs!
-  - If -Xint (interpret only) is passed then it runs indefinately...
-  - If -Xcomp (compile first) then it works (i.e. might be reordering)
+  - If no flags were passed then it hung!
+  - If -Xint (interpret only) was passed then it ran indefinately...
+  - If -Xcomp (compile first) then it worked (i.e. might have reordered)
 
 (Using: javac 1.8.0_73, java version "1.8.0_73")
 
@@ -61,3 +61,15 @@ means we're getting reordering.
 
 	Wooah! x:0 y:70 (Run count: 11)
 	[ex2-Reorder]
+
+Update:
+-------
+Marking x and y as volatile prevents:
+  
+  1.	the -Xcomp version from stopping, i.e. it never finds evidence
+		of reordering.
+  2.	the normal/mixed version hanging.
+
+This suggest (to me) that there might actually be reordering and it's
+possible the hanging of the 'normal/mixed' version is related to the
+reordering (possibly as it switches from intperpreted to compiled).
