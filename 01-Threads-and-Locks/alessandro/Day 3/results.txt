@@ -1,0 +1,11 @@
+Results on a ~700MB test file:
+
+Stream...	Time: 7536ms	[Baseline]
+Memory...	Time: 1857ms	[OK]
+Chunks...	Time: 1956ms	[OK]
+Parallel...	Time: 569ms	[OK]
+PC...	Time: 1572ms	[OK]
+P2C...	Time: 859ms	[OK]
+P3C...	Time: 692ms	[OK]
+P8C...	Time: 592ms	[OK]
+P16C...	Time: 585ms	[OK]
